@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 // import { MainComponentService } from './app.component.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
 	public internshipList: string[] = [];
-	public userInfo: UserInfo[] = [];
+	public userInfo: UserInfo = new UserInfo();
 	
 	constructor(/* private mainComponentService: MainComponentService */) {}
 }

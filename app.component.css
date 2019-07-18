@@ -7,6 +7,12 @@
     align-content: center;
 }
 
+
+.col-md-4 {
+    align-content: center;
+    text-align: center;
+}
+
 .form-custom {
     height: auto;
     overflow-y: auto;
