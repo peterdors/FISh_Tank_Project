@@ -1,0 +1,15 @@
+
+.header {
+    text-align: center;
+}
+
+.col-md-8 {
+    align-content: center;
+}
+
+.form-custom {
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-left: 5px;
+  }
