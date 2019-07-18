@@ -1,0 +1,26 @@
+To run the Angular application locally, first download Node.js. Use NPM to run:
+
+npm install -g @angular/cli
+
+After Angular is installed, you can use command prompt to create a new Angular project.
+Simply run:
+
+ng new fish-tank-project
+
+Then, to work with these files in the command line just set your CD to the project folder:
+
+cd fish-tank-project
+
+Navigate from the base folder to "fish-tank-project\src\app,"
+then replace the files there with the app.component files in this repository.
+
+Next, use the command line (be sure to set your cd!) to run:
+
+ng build
+
+Then, 
+
+ng serve
+
+And the application will be running on localhost:4200. You can view it here,
+and it will listen to any changes to the source files.
