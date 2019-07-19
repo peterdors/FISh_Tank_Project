@@ -2,12 +2,23 @@
   <h1 class="header">Welcome to Team 3's FIS(h) Tank Project Website!</h1>
   <div class="col-md-8">
     <div class="form-custom">
-      <div class="col-md-4">
-        <input MatInput [(ngModel)]="userInfo.email" name="userInfo.email" [(value)]="userInfo.email" placeholder="Email"/>
-        <input MatInput [(ngModel)]="userInfo.firstName" name="userInfo.firstName" [(value)]="userInfo.firstName"/>      
-      </div>
-      <div class="col-md-4">
-        <input MatInput [(ngModel)]="userInfo.lastname" name="userInfo.lastname" [(value)]="userInfo.lastname"/>
+      <div class="container">
+        <div class="col-md-4">
+          <div class="row">
+            <embed>
+          </div>
+          <div class="row">
+            <input MatInput [(ngModel)]="userInfo.email" name="userInfo.email" [(value)]="userInfo.email" placeholder="Email" class="email"/>
+          </div>
+          <div class="row">
+            <input MatInput [(ngModel)]="userInfo.firstName" name="userInfo.firstName" [(value)]="userInfo.firstName" placeholder="First Name"/>          
+            <input MatInput [(ngModel)]="userInfo.lastName" name="userInfo.lastName" [(value)]="userInfo.lastName" placeholder="Last Name"/>
+          </div>
+          <div class="row">
+            <button class="custom-button" (click)="submitUserInfo()">Submit</button>
+            <button class="custom-button" (click)="clearAllInput()">Clear</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
