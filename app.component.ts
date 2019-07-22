@@ -15,19 +15,18 @@ export class MainComponent implements OnInit {
   public userInfo: UserInfo = new UserInfo();
   public fileText
 
-  public columns = ["title", "location"];
+  public columns = ["title", "location", "Hyperlink"];
 
   constructor(/* private mainComponentService: MainComponentService */ private http: HttpClient) { }
 
   ngOnInit() {
     var self = this;
-    // call the python script to create the latest version of the internships.txt file
     this.parseFile()
   }
 
   parseFile() {
     
-    var internshipOpportunity1 = new internship("Human Resources Internship RS", "RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160", "https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=148595&localeCode=en-us");
+    var internshipOpportunity1 = new internship("Human Resources Internship", "RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160", "https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=148595&localeCode=en-us");
     this.internshipList.push(internshipOpportunity1);
     internshipOpportunity1 = new internship("Developer Consultant Intern", "RS-Belgrade-Belgrade Bulevar Milutina Milankovica 136b-4160 ", "https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147071&localeCode=en-us");
     this.internshipList.push(internshipOpportunity1);
@@ -50,6 +49,11 @@ export class MainComponent implements OnInit {
     //  this.internshipList.push(opportunity);
     //}
   }
+
+  onNavigate(websiteToGoTo: string) {
+    window.location.href = websiteToGoTo;
+  }
+
 }
 
 export class UserInfo {

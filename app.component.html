@@ -10,19 +10,20 @@
         <input MatInput [(ngModel)]="userInfo.lastname" name="userInfo.lastname" [(value)]="userInfo.lastname" placeholder="Last Name"/>
       </div>
     </div>
-    <!--<div>
-      <input type="file" accept=".txt" onclick="fileUpload()"/>
-    </div>-->
     <br />
     <br />
     <mat-table #table [dataSource]="internshipList" class="mat-elevation-z8">
       <ng-container matColumnDef="title">
         <mat-header-cell class="headerCellStyle" *matHeaderCellDef>Title</mat-header-cell>
-        <mat-cell class="matCellStyle" *matCellDef="let data"> {{data.title}}</mat-cell>
+        <mat-cell class="matCellStyle" *matCellDef="let data" [routerLink]="data.hyperlink">{{data.title}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="location">
         <mat-header-cell class="headerCellStyle" *matHeaderCellDef>Location</mat-header-cell>
         <mat-cell class="matCellStyle" *matCellDef="let data">{{data.location}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Hyperlink">
+        <mat-header-cell class="headerCellStyle" *matHeaderCellDef>Hyperlink</mat-header-cell>
+        <mat-cell class="matCellStyle" *matCellDef="let data">{{data.hyperlink}}</mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="columns; sticky:true"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columns;"></mat-row>
