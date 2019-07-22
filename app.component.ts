@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
   public userInfo: UserInfo = new UserInfo();
   public fileText
 
-  public columns = ["title", "location", "Hyperlink"];
+  public columns = ["title", "location"]; 
 
   constructor(/* private mainComponentService: MainComponentService */ private http: HttpClient) { }
 
@@ -51,8 +51,7 @@ export class MainComponent implements OnInit {
   }
 
   goToHyperlink(opportunity: internship) {
-    console.log("Got into the goToHyperlink method");
-    window.location.href = opportunity.hyperlink;
+    window.open(opportunity.hyperlink)
   }
 
 }
