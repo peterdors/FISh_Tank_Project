@@ -50,8 +50,9 @@ export class MainComponent implements OnInit {
     //}
   }
 
-  onNavigate(websiteToGoTo: string) {
-    window.location.href = websiteToGoTo;
+  goToHyperlink(opportunity: internship) {
+    console.log("Got into the goToHyperlink method");
+    window.location.href = opportunity.hyperlink;
   }
 
 }

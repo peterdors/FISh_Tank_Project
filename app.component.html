@@ -15,8 +15,10 @@
     <mat-table #table [dataSource]="internshipList" class="mat-elevation-z8">
       <ng-container matColumnDef="title">
         <mat-header-cell class="headerCellStyle" *matHeaderCellDef>Title</mat-header-cell>
-        <mat-cell class="matCellStyle" *matCellDef="let data" [routerLink]="data.hyperlink">{{data.title}}</mat-cell>
+        <mat-cell class="matCellStyle" *matCellDef="let data">{{data.title}}</mat-cell>
       </ng-container>
+      <!-- (onclick)="goToHyperlink(row)" -->
+      <!-- [routerLink]="data.hyperlink" -->
       <ng-container matColumnDef="location">
         <mat-header-cell class="headerCellStyle" *matHeaderCellDef>Location</mat-header-cell>
         <mat-cell class="matCellStyle" *matCellDef="let data">{{data.location}}</mat-cell>
@@ -26,7 +28,7 @@
         <mat-cell class="matCellStyle" *matCellDef="let data">{{data.hyperlink}}</mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="columns; sticky:true"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+      <mat-row *matRowDef="let row; columns: columns;" (click)="goToHyperlink(row)"></mat-row>
     </mat-table>
   </div>
 </div>
