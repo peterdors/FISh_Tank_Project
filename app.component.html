@@ -1,14 +1,31 @@
-<div class="background-cover">
+<div class="background-cover" (onload)="fileUpload()">
   <h1 class="header">Welcome to Team 3's FIS(h) Tank Project Website!</h1>
   <div class="col-md-8">
     <div class="form-custom">
       <div class="col-md-4">
         <input MatInput [(ngModel)]="userInfo.email" name="userInfo.email" [(value)]="userInfo.email" placeholder="Email"/>
-        <input MatInput [(ngModel)]="userInfo.firstName" name="userInfo.firstName" [(value)]="userInfo.firstName"/>      
+        <input MatInput [(ngModel)]="userInfo.firstName" name="userInfo.firstName" [(value)]="userInfo.firstName" placeholder="First Name"/>      
       </div>
       <div class="col-md-4">
-        <input MatInput [(ngModel)]="userInfo.lastname" name="userInfo.lastname" [(value)]="userInfo.lastname"/>
+        <input MatInput [(ngModel)]="userInfo.lastname" name="userInfo.lastname" [(value)]="userInfo.lastname" placeholder="Last Name"/>
       </div>
     </div>
+    <!--<div>
+      <input type="file" accept=".txt" onclick="fileUpload()"/>
+    </div>-->
+    <br />
+    <br />
+    <mat-table #table [dataSource]="internshipList" class="mat-elevation-z8">
+      <ng-container matColumnDef="title">
+        <mat-header-cell class="headerCellStyle" *matHeaderCellDef>Title</mat-header-cell>
+        <mat-cell class="matCellStyle" *matCellDef="let data"> {{data.title}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="location">
+        <mat-header-cell class="headerCellStyle" *matHeaderCellDef>Location</mat-header-cell>
+        <mat-cell class="matCellStyle" *matCellDef="let data">{{data.location}}</mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="columns; sticky:true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+    </mat-table>
   </div>
 </div>

@@ -19,3 +19,17 @@
     overflow-x: hidden;
     padding-left: 5px;
   }
+
+.headerCellStyle {
+  white-space: nowrap;
+  overflow: visible;
+  vertical-align: baseline;
+  justify-content: center;
+}
+
+.matCellStyle {
+  justify-content: center;
+  border-right: solid;
+  border-right-width: 1px;
+  border-right-color: lightgray;
+}

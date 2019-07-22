@@ -3,8 +3,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSelectModule, MatTabsModule, MatButtonModule, MatCardModule, MatCheckboxModule, 
-  MatFormFieldModule, MatInputModule } from '@angular/material';
+import {
+  MatSelectModule, MatTabsModule, MatTableModule, MatButtonModule, MatCardModule, MatCheckboxModule, 
+  MatFormFieldModule, MatInputModule} from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './app.component';
@@ -27,7 +30,9 @@ import { MainComponentService } from './app.component.service';
     MatCardModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule,
+    MatTableModule,
   ],
   providers: [MainComponentService],
   bootstrap: [MainComponent]
