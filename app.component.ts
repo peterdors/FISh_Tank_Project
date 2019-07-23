@@ -14,7 +14,8 @@ import { HttpClient } from '@angular/common/http';
 export class MainComponent implements OnInit {
   public internshipList: internship[] = [];
   public userInfo: UserInfo = new UserInfo();
-  public fileText
+  public fileText;
+
 
   public columns = ["title", "location"];
 
@@ -23,28 +24,27 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     var self = this;
     this.parseFile()
+    this.printInternships();
+  }
+
+  printInternships() {
+    console.log("length is " + this.internshipList.length)
+    for (var index = 0; index < this.internshipList.length; index++) {
+      console.log("printing index: " + index);
+      console.log("Title: " + this.internshipList[index].title);
+      console.log("Location: " + this.internshipList[index].location);
+      console.log("Hyperlink: " + this.internshipList[index].hyperlink);
+    }
   }
 
   parseFile() {
-    
-    //var internshipOpportunity1 = new internship("Human Resources Internship", "RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160", "https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=148595&localeCode=en-us");
-    //this.internshipList.push(internshipOpportunity1);
-    //internshipOpportunity1 = new internship("Developer Consultant Intern", "RS-Belgrade-Belgrade Bulevar Milutina Milankovica 136b-4160 ", "https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147071&localeCode=en-us");
-    //this.internshipList.push(internshipOpportunity1);
-    //internshipOpportunity1 = new internship("Internship - Quality Assurance Analyst", "RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160", "https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147056&localeCode=en-us");
-    //this.internshipList.push(internshipOpportunity1);
-    //internshipOpportunity1 = new internship("Internship - Business Analyst", "RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160", "https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147053&localeCode=en-us");
-    //this.internshipList.push(internshipOpportunity1);
-    //internshipOpportunity1 = new internship("Internship - Technical Analyst", "RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160", "https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147049&localeCode=en-us ");
-    //this.internshipList.push(internshipOpportunity1);
-
-    //var opportunityString = this.getStringOfInternships();
-
-    var opportunityString = "Human Resources InternshipRS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=148595&localeCode=en-us Developer Consultant Intern RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160 https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147071&localeCode=en-us";
+    var opportunityString = "";
+    //opportunityString =  this.getStringOfInternships();
+    console.log( "opportunityString is " + opportunityString);
+    //opportunityString = "Human Resources InternshipRS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=148595&localeCode=en-us Developer Consultant Intern RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160 https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147071&localeCode=en-us";
     var internshipBlocks: string[] = opportunityString.split("en-us"); // know the end of the hyperlink and end of entry by "en-us" => each internship is one place in the array
-    var opportunity: internship = new internship();
-
     for (var i = 0; i < internshipBlocks.length - 1; i++) {
+      var opportunity: internship = new internship("", "", "");
       console.log("starting internship " + i);
       internshipBlocks[i] = internshipBlocks[i] + "en-us";
       var internshipTitle: string[] = internshipBlocks[i].split("RS");
@@ -54,13 +54,27 @@ export class MainComponent implements OnInit {
       internshipLocation[1] = "https://" + internshipLocation[1];
       opportunity.location = internshipLocation[0];
       opportunity.hyperlink = internshipLocation[1];
-       this.internshipList.push(opportunity);
+      console.log(opportunity.title);
+      console.log(opportunity.location);
+      console.log(opportunity.hyperlink);
+      this.internshipList.push(opportunity);
     }
-
+  }
+  getStringOfInternships() {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", "assets/internships.txt", true);
+    rawFile.send();
+    rawFile.onreadystatechange = function () {
+      if (rawFile.readyState === 4 && (rawFile.status === 200 || rawFile.status === 0)) {
+        return rawFile.responseText;
+      }
+    }
   }
 
-  getStringOfInternships() {
-    return this.http.get("./internships.txt");
+  stateChanged(rawFile: XMLHttpRequest) {
+    if (rawFile.readyState === 4 && (rawFile.status === 200 || rawFile.status === 0)) {
+      return rawFile.responseText;
+    }
   }
 
   goToHyperlink(opportunity: internship) {
@@ -80,4 +94,10 @@ export class internship {
   public title: string;
   public location: string;
   public hyperlink: string;
+
+  constructor(title: string, location: string, hyperlink: string) {
+    this.title = "";
+    this.location = "";
+    this.hyperlink = "";
+  }
 }
