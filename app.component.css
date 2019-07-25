@@ -30,3 +30,12 @@
       margin-right: 5px;
       box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   }
+
+  .image {
+      max-width: 20%;
+      margin: 10px;
+  }
+
+  .image2 {
+      max-width: 26%;
+  }
