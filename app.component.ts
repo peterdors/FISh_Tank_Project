@@ -23,18 +23,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     var self = this;
-    this.parseFile()
-    this.printInternships();
-  }
-
-  printInternships() {
-    console.log("length is " + this.internshipList.length)
-    for (var index = 0; index < this.internshipList.length; index++) {
-      console.log("printing index: " + index);
-      console.log("Title: " + this.internshipList[index].title);
-      console.log("Location: " + this.internshipList[index].location);
-      console.log("Hyperlink: " + this.internshipList[index].hyperlink);
-    }
+    this.parseFile();
   }
 
   submitUserInfo(): void {
@@ -51,7 +40,6 @@ export class MainComponent implements OnInit {
     var internshipBlocks: string[] = opportunityString.split("en-us"); 
     for (var i = 0; i < internshipBlocks.length - 1; i++) {
       var opportunity: internship = new internship("", "", "");
-      console.log("starting internship " + i);
       internshipBlocks[i] = internshipBlocks[i] + "en-us";
       var internshipTitle: string[] = internshipBlocks[i].split("RS");
       opportunity.title = internshipTitle[0];
@@ -71,13 +59,10 @@ export class MainComponent implements OnInit {
     rawFile.onreadystatechange = function () {
       if (rawFile.readyState === 4 && (rawFile.status === 200 || rawFile.status === 0)) {
         aString = rawFile.responseText;
-        console.log("Inside the function: " + aString);
       }
     }
     rawFile.send(null);
-    console.log("outside function");
     //aString = "Human Resources InternshipRS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160 https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=148595&localeCode=en-us Developer Consultant Intern RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160 https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147071&localeCode=en-usInternship - Quality Assurance Analyst RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160 https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147056&localeCode=en-us Internship - Business Analyst RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160 https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147053&localeCode=en-us Internship - Technical Analyst RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160 https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147049&localeCode=en-us Internship - C++ Developer RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160 https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147051&localeCode=en-us Internship - DevOps RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160 https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147047&localeCode=en-us Internship - Java Developer RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160 https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147046&localeCode=en-us Internship - .NET Developer RS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160 https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147044&localeCode=en-us Recruitment InternshipRS - Belgrade - Belgrade Bulevar Milutina Milankovica 136b - 4160https://careers.peopleclick.com/careerscp/client_FISGlobal/external/jobDetails/jobDetail.html?jobPostId=147052&localeCode=en-us";
-    console.log("aString is " + aString);
     return aString;
   }
 
