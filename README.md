@@ -20,3 +20,9 @@ Usage: In your command line/terminal application, navigate to the local file dir
 If Python 3 is not set as your default version, call 'python3 main.py' from the command line. Otherwise, use 'python main.py'
 
 
+The image1, image2, and image3 files need to go in the "assets" folder of your Angular project.
+To load the video file, place it in the assets folder as well, and make sure the video's name
+is the same as in the HTML tag attribute, or change it.
+
+Modern web browsers only only Angular apps to load local resources from the "assets" folder as assessing other disk 
+space is a security risk.
