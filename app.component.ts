@@ -1,5 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
-// import { MainComponentService } from './app.component.service';
+import { MainComponentService } from './app.component.service';
+import { MatInput, MatInputModule, MatFormField, MatFormFieldModule } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,12 @@ import { Component, ElementRef } from '@angular/core';
 export class MainComponent {
 	public internshipList: string[] = [];
 	public userInfo: UserInfo = new UserInfo();
-	
+
   constructor(/* private mainComponentService: MainComponentService */) {}
 
   submitUserInfo(): void {
     this.clearAllInput();
-    return; // As a proof of concept this method won't actually do anything...    
+    return; // As a proof of concept this method won't actually do anything...
   }
 
   clearAllInput(): void {

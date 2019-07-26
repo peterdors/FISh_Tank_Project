@@ -4,7 +4,9 @@ import { Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MainComponent, UserInfo } from './app.component';
 
-Injectable()
+Injectable();
 export class MainComponentService {
+
+    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {}
 
 }
