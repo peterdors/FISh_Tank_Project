@@ -50,4 +50,15 @@
 
 .tableClass {
   box-shadow: 2px 3px 4px 0px;
+  margin-top: 10px;
+}
+
+.pictureStyle{
+  max-height:550px;
+  margin: 10px;
+}
+
+.formFieldStyle {
+   margin-left:30px;
+   margin-right:30px;
 }
