@@ -2,9 +2,6 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { URL } from 'url';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
-//import { Observable } from 'rxjs/Observable';
-// import { MainComponentService } from './app.component.service';
-//import require('internships.txt';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +21,10 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     var self = this;
     this.parseFile();
+  }
+
+  openInstagramPage() {
+    window.open("https://www.instagram.com");
   }
 
   submitUserInfo(): void {
