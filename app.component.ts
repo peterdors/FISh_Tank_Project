@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class MainComponent implements OnInit {
   public internshipList: internship[] = [];
   public userInfo: UserInfo = new UserInfo();
@@ -75,6 +76,7 @@ export class MainComponent implements OnInit {
   goToHyperlink(opportunity: internship) {
     window.open(opportunity.hyperlink)
   }
+
 
 }
 
