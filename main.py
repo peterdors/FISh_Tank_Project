@@ -15,8 +15,7 @@ from time import sleep
 browser = Browser('chrome', headless=True) # Doesn't display Chrome
 
 # Visit URL.
-url = JOB_SEARCH_URL
-browser.visit(url)
+browser.visit(JOB_SEARCH_URL)
 
 # Find and click on the 'Intern' positions from the website. 
 option = browser.find_by_xpath('//select[@id="com.peopleclick.cp.formdata.JPM_DURATION"]//option[@value="7"]')
@@ -25,6 +24,11 @@ option.click()
 # Javascript injection to unselect the option for 'all' positions. 
 # Without this, the webpage will still load all the open positions from the site.  
 browser.execute_script('document.getElementsByTagName("select")[3].getElementsByTagName("option")[0].selected = false')
+
+# Select the most results per page that we can display. This is to be a quick 
+# and easy method for getting the whole list of internships currently available.
+browser.execute_script('document.getElementById("com.peopleclick.cp.formdata.hitsPerPage").getElementsByTagName("option")[0].selected = false')
+browser.execute_script('document.getElementById("com.peopleclick.cp.formdata.hitsPerPage").getElementsByTagName("option")[3].selected = true')
 
 # Find and click the 'Search' button from the website. 
 button = browser.find_by_id('sp-searchButton')
