@@ -1,3 +1,4 @@
+
 <div class="background-cover">
   <h1 class="header">Welcome to Team 3's FIS(h) Tank Project Website!</h1>
   <div class="col-md-8">
@@ -5,19 +6,58 @@
       <div class="container">
         <div class="col-md-4">
           <div class="row">
-            <embed>
+            <video controls>
+              <source src="./assets/video_1.mov">
+              Your browser does not support embedded videos
+            </video>
           </div>
           <div class="row">
-            <input MatInput [(ngModel)]="userInfo.email" name="userInfo.email" [(value)]="userInfo.email" placeholder="Email" class="email"/>
+            <img src="./assets/img_2.jpeg" class="pictureStyle" (click)="openInstagramPage()"/>
+            <img src="./assets/img_1.jpeg" class="pictureStyle" (click)="openInstagramPage()"/>
+            <img src="./assets/img_3.jpeg" class="pictureStyle" (click)="openInstagramPage()"/>
           </div>
           <div class="row">
-            <input MatInput [(ngModel)]="userInfo.firstName" name="userInfo.firstName" [(value)]="userInfo.firstName" placeholder="First Name"/>          
-            <input MatInput [(ngModel)]="userInfo.lastName" name="userInfo.lastName" [(value)]="userInfo.lastName" placeholder="Last Name"/>
+            <mat-card>
+              <mat-card-title>Contact Information</mat-card-title>
+              <mat-card-content>
+                <div class="row">
+                  <mat-form-field class="formFieldStyle">
+                    <input matInput [(ngModel)]="userInfo.firstName" name="userInfo.firstName"
+                           [(value)]="userInfo.firstName" placeholder="First Name" class="inputStyle" />
+                  </mat-form-field>
+                  <mat-form-field class="formFieldStyle">
+                    <input matInput [(ngModel)]="userInfo.lastName" name="userInfo.lastName" [(value)]="userInfo.lastName"
+                           placeholder="Last Name" class="inputStyle" />
+                  </mat-form-field>
+                  <mat-form-field class="formFieldStyle">
+                    <input matInput [(ngModel)]="userInfo.email" name="userInfo.email" [(value)]="userInfo.email"
+                           placeholder="Email" class="inputStyle" />
+                  </mat-form-field>
+                </div>
+                <button class="custom-button" (click)="submitUserInfo()">Submit</button>
+                <button class="custom-button" (click)="clearAllInput()">Clear</button>
+              </mat-card-content>
+            </mat-card>
           </div>
-          <div class="row">
-            <button class="custom-button" (click)="submitUserInfo()">Submit</button>
-            <button class="custom-button" (click)="clearAllInput()">Clear</button>
-          </div>
+        </div>
+        <div class="col-md-4">
+        <mat-card>
+          <mat-card-title>Internship Openings</mat-card-title>
+          <mat-card-content>
+            <mat-table #table [dataSource]="internshipList" class="mat-elevation-z8 tableClass">
+              <ng-container matColumnDef="title">
+                <mat-header-cell class="headerCellStyle" *matHeaderCellDef>Title</mat-header-cell>
+                <mat-cell class="matCellStyle" *matCellDef="let data">{{data.title}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="location">
+                <mat-header-cell class="headerCellStyle" *matHeaderCellDef>Location</mat-header-cell>
+                <mat-cell class="matCellStyle" *matCellDef="let data">{{data.location}}</mat-cell>
+              </ng-container>
+              <mat-header-row *matHeaderRowDef="columns; sticky:true"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: columns;" (click)="goToHyperlink(row)"></mat-row>
+            </mat-table>
+          </mat-card-content>
+        </mat-card>
         </div>
       </div>
     </div>
